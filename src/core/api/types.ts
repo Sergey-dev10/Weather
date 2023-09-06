@@ -1,0 +1,6 @@
+export enum REQUEST_STATUS {
+  INIT,
+  LOADING,
+  SUCCESS,
+  ERROR,
+}
