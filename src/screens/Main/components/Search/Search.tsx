@@ -19,6 +19,7 @@ import { Place } from "../../../../modules/search/types.ts";
 import { Location } from "./components/Location";
 import { REQUEST_STATUS } from "../../../../core/api/types.ts";
 import { nanoid } from "@reduxjs/toolkit";
+import debounce from "debounce";
 
 export const Search = () => {
   const [search, setSearch] = useState("");
@@ -30,7 +31,21 @@ export const Search = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     setIsSelected(false);
+    setIsClearIcon(true);
+    dispatch(clearSearchResult());
   };
+
+  const clearSearch = debounce(() => {
+    setIsSelected(false);
+    setIsClearIcon(false);
+    dispatch(clearSearchResult());
+  }, 600);
+
+  const startSearch = debounce((searchQuery: string) => {
+    if (searchQuery.trim()) {
+      dispatch(searchStart(searchQuery));
+    }
+  }, 150);
   const handleChoose = (e: React.MouseEvent<HTMLDivElement>) => {
     const btn = e.currentTarget as HTMLDivElement;
     setSearch(btn.innerText);
@@ -45,11 +60,11 @@ export const Search = () => {
   useEffect(() => {
     const searchQuery = search.trim();
     if (!searchQuery) {
-      dispatch(clearSearchResult());
+      clearSearch();
+      return;
     }
     if (searchQuery && !isSelected) {
-      dispatch(searchStart(searchQuery));
-      setIsClearIcon(true);
+      startSearch(searchQuery);
     }
     return () => {
       dispatch(clearSearchResult());
@@ -80,7 +95,7 @@ export const Search = () => {
         />
 
         <Stack sx={{ height: 600 }}>
-          {searchStatus === REQUEST_STATUS.SUCCESS ? (
+          {searchStatus === REQUEST_STATUS.SUCCESS && search.length > 0 ? (
             <List>
               {places.length
                 ? places.map((place: Place) => {
