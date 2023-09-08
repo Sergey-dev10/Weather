@@ -4,6 +4,7 @@ import {
   InputAdornment,
   List,
   Stack,
+  Select,
   TextField,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -19,7 +20,7 @@ import { Place } from "../../../../modules/search/types.ts";
 import { Location } from "./components/Location";
 import { REQUEST_STATUS } from "../../../../core/api/types.ts";
 import { nanoid } from "@reduxjs/toolkit";
-import debounce from "debounce";
+import { debounce } from "debounce";
 
 export const Search = () => {
   const [search, setSearch] = useState("");
@@ -94,8 +95,8 @@ export const Search = () => {
           }}
         />
 
-        <Stack sx={{ height: 600 }}>
-          {searchStatus === REQUEST_STATUS.SUCCESS && search.length > 0 ? (
+        {searchStatus === REQUEST_STATUS.SUCCESS && search.length > 0 ? (
+          <Stack sx={{ width: 600, height: 200, position: "absolute", top: 60, zIndex: 1000 }}>
             <List>
               {places.length
                 ? places.map((place: Place) => {
@@ -103,16 +104,18 @@ export const Search = () => {
                       <Location
                         key={nanoid()}
                         name={place.name}
+                        lat={place.lat}
+                        lon={place.lon}
                         onChoose={handleChoose}
                       />
                     );
                   })
                 : ""}
             </List>
-          ) : (
-            ""
-          )}
-        </Stack>
+          </Stack>
+        ) : (
+          ""
+        )}
       </FormControl>
     </Stack>
   );
