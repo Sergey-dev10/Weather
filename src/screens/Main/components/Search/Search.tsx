@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { InputAdornment, List, Box } from "@mui/material";
+import { Box, InputAdornment, List } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
@@ -12,12 +12,13 @@ import {
 import { Place } from "../../../../modules/search/types.ts";
 import { Location } from "./components/Location";
 import { REQUEST_STATUS } from "../../../../core/api/types.ts";
+import {Message} from "./components/Message";
 import { nanoid } from "@reduxjs/toolkit";
 import { debounce } from "debounce";
 import {
-  SearchInput,
   FormControlWrapper,
   LocationsWrapper,
+  SearchInput,
 } from "./Search.styles.ts";
 
 export const Search = () => {
@@ -44,7 +45,8 @@ export const Search = () => {
     if (searchQuery.trim()) {
       dispatch(searchStart(searchQuery));
     }
-  }, 150);
+  }, 100);
+
   const handleChoose = (e: React.MouseEvent<HTMLDivElement>) => {
     const btn = e.currentTarget as HTMLDivElement;
     setSearch(btn.innerText);
@@ -93,7 +95,7 @@ export const Search = () => {
             ),
           }}
         />
-
+        {searchStatus === REQUEST_STATUS.SUCCESS && places.length === 0 ? <Message /> : "" }
         {searchStatus === REQUEST_STATUS.SUCCESS &&
         search.length > 0 &&
         places.length > 0 ? (

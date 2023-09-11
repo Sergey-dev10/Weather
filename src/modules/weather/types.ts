@@ -4,21 +4,57 @@ export interface Coordinates {
   lon: number;
 }
 
-export interface WeatherState {
-  status: REQUEST_STATUS;
-  current: CurrentWeather;
-  forecast: any;
+// interface WeatherInfo {
+//   description: string;
+// }
+
+export interface CurrentWeather {
+  temp: number | null;
+  feels_like: number | null;
+  weather: [
+    {
+      description: string | null;
+    }
+  ] | null;
 }
 
-interface CurrentWeather {
+interface HourlyWeather {
+  dt: number;
+  temp: number;
+  feels_like: number;
   weather: [
     {
       description: string;
       icon: string;
     },
   ];
-  main: {
-    temp: number;
-    feels_like: number;
+}
+
+interface DailyWeather {
+  dt: number;
+  temp: {
+    eve: number;
   };
+  feels_like: {
+    eve: number;
+  };
+  weather: [
+    {
+      description: string;
+      icon: string;
+    },
+  ];
+}
+interface ForecastWeather {
+  hourly: HourlyWeather[];
+  daily: DailyWeather[];
+}
+
+export interface Weather {
+  current: CurrentWeather | null;
+  forecast: ForecastWeather | null;
+}
+
+export interface WeatherState extends Weather {
+  status: REQUEST_STATUS;
 }

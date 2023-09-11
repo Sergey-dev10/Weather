@@ -23,10 +23,13 @@ const searchSlice = createSlice({
       state.status = REQUEST_STATUS.INIT;
       state.result = [];
     },
+    failedSearch(state) {
+      state.status = REQUEST_STATUS.ERROR;
+    },
   },
 });
 
-export const { searchStart, searchSuccess, clearSearchResult } =
+export const { searchStart, searchSuccess, clearSearchResult, failedSearch } =
   searchSlice.actions;
 export const selectPlaces = ({ search }: RootState): Place[] => search.result;
 export const selectSearchStatus = ({ search }: RootState): REQUEST_STATUS =>

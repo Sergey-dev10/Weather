@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { searchStart, searchSuccess } from "./slice";
+import { searchStart, searchSuccess, failedSearch } from "./slice";
 import {getPlaces} from "../../core/api";
 
 function* searchWorker({ payload }: { payload: string } ): any {
@@ -8,6 +8,7 @@ function* searchWorker({ payload }: { payload: string } ): any {
         yield put(searchSuccess(result));
     } catch (e) {
         console.log(e);
+        yield put(failedSearch());
     }
 }
 

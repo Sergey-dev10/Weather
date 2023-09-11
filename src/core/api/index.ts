@@ -12,11 +12,10 @@ export const getPlaces = (searchQuery: string) => {
     }).then(response => response.data);
 };
 
-const WEATHER_CURRENT_URL = "https://api.openweathermap.org/data/2.5/weather";
-const WEATHER_FORECAST_URL = "https://api.openweathermap.org/data/2.5/forecast";
+const WEATHER_URL = "https://api.openweathermap.org/data/2.5/onecall";
 
-export const getCurrentWeather = (lat: number, lon: number) => {
-    return axios.get(WEATHER_CURRENT_URL, {
+export const getWeather = (lat: number, lon: number) => {
+    return axios.get(WEATHER_URL, {
         params: {
             lat: lat,
             lon: lon,
@@ -25,12 +24,3 @@ export const getCurrentWeather = (lat: number, lon: number) => {
     }).then(response => response.data);
 };
 
-export const getForecastWeather = (lat: number, lon: number) => {
-    return axios.get(WEATHER_FORECAST_URL, {
-        params: {
-            lat: lat,
-            lon: lon,
-            appid: "70a7e54e3b54932247ad27262b24a8ce",
-        },
-    }).then(response => response.data);
-};
