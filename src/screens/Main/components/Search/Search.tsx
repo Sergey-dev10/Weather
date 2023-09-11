@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  FormControl,
-  InputAdornment,
-  List,
-  Stack,
-  Select,
-  TextField,
-} from "@mui/material";
+import { InputAdornment, List, Box } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
@@ -21,6 +14,11 @@ import { Location } from "./components/Location";
 import { REQUEST_STATUS } from "../../../../core/api/types.ts";
 import { nanoid } from "@reduxjs/toolkit";
 import { debounce } from "debounce";
+import {
+  SearchInput,
+  FormControlWrapper,
+  LocationsWrapper,
+} from "./Search.styles.ts";
 
 export const Search = () => {
   const [search, setSearch] = useState("");
@@ -73,9 +71,10 @@ export const Search = () => {
   }, [search]);
 
   return (
-    <Stack spacing={2} sx={{ width: 600 }}>
-      <FormControl>
-        <TextField
+    <Box>
+      <FormControlWrapper sx={{ display: "flex" }}>
+        <SearchInput
+          sx={{ width: 600 }}
           placeholder="Enter the name of your location"
           value={search}
           onChange={handleChange}
@@ -95,8 +94,14 @@ export const Search = () => {
           }}
         />
 
-        {searchStatus === REQUEST_STATUS.SUCCESS && search.length > 0 ? (
-          <Stack sx={{ width: 600, height: 200, position: "absolute", top: 60, zIndex: 1000 }}>
+        {searchStatus === REQUEST_STATUS.SUCCESS &&
+        search.length > 0 &&
+        places.length > 0 ? (
+          <LocationsWrapper
+            sx={{
+              width: 600,
+            }}
+          >
             <List>
               {places.length
                 ? places.map((place: Place) => {
@@ -112,11 +117,11 @@ export const Search = () => {
                   })
                 : ""}
             </List>
-          </Stack>
+          </LocationsWrapper>
         ) : (
           ""
         )}
-      </FormControl>
-    </Stack>
+      </FormControlWrapper>
+    </Box>
   );
 };

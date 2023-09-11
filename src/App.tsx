@@ -1,17 +1,16 @@
-import {Provider} from "react-redux";
-import store from "./modules"
-import {Main} from "./screens/Main";
-import './App.css'
-
+import { Provider } from "react-redux";
+import store from "./modules";
+import { Main } from "./screens/Main";
+import { GlobalStyles } from "./common/GlobolStyles.styles.ts";
 function App() {
-
   return (
     <Provider store={store}>
       <>
-          <Main/>
+        <Main />
+        <GlobalStyles />
       </>
     </Provider>
   );
 }
 
-export default App
+export default App;

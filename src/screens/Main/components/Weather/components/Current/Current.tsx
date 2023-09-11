@@ -1,18 +1,26 @@
 import { useAppSelector } from "../../../../../../hooks";
 import { selectCurrentWeather } from "../../../../../../modules/weather/selectors.ts";
-import { Stack } from "@mui/material";
+import { Box } from "@mui/material";
+import { Description, Temp, FeelsLike, WeatherIcon } from "./Current.styles.ts";
 export const Current = () => {
   const current = useAppSelector(selectCurrentWeather);
 
   const {
-    weather: [{ description, icon }],
+    weather: [{ description }],
     main: { temp, feels_like },
   } = current;
   return (
-    <Stack sx={{ width: 300 }}>
-      <p>{description}</p>
-      <p>{temp}</p>
-      <p>{feels_like}</p>
-    </Stack>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: 200,
+        marginTop: 10,
+      }}
+    >
+      <Description>{description}</Description>
+      <Temp>{temp}</Temp>
+      <FeelsLike>Feels Like: {feels_like}</FeelsLike>
+    </Box>
   );
 };
