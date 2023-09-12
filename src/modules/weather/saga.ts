@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { weatherStart, weatherSuccess } from "./slice.ts";
+import { weatherStart } from "./actions.ts"
+import { weatherSuccess } from "./slice.ts";
 import { getWeather } from "../../core/api";
 function* weatherWorker({
   payload: { lat, lon },
@@ -8,7 +9,6 @@ function* weatherWorker({
 }) {
   try {
     const weather = yield call(getWeather, lat, lon);
-    console.log(weather.hourly);
     yield put(
       weatherSuccess({
         current: weather.current,

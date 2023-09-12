@@ -3,16 +3,16 @@ import { Box, InputAdornment, List } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
+import {searchStart} from "../../../../modules/search/actions.ts";
+import { clearSearchResult } from "../../../../modules/search/slice.ts";
 import {
-  clearSearchResult,
-  searchStart,
-  selectPlaces,
   selectSearchStatus,
-} from "../../../../modules/search/slice.ts";
+  selectPlaces,
+} from "../../../../modules/search/selectors.ts";
 import { Place } from "../../../../modules/search/types.ts";
 import { Location } from "./components/Location";
 import { REQUEST_STATUS } from "../../../../core/api/types.ts";
-import {Message} from "./components/Message";
+import { Message } from "./components/Message";
 import { nanoid } from "@reduxjs/toolkit";
 import { debounce } from "debounce";
 import {
@@ -95,7 +95,11 @@ export const Search = () => {
             ),
           }}
         />
-        {searchStatus === REQUEST_STATUS.SUCCESS && places.length === 0 ? <Message /> : "" }
+        {searchStatus === REQUEST_STATUS.SUCCESS && places.length === 0 ? (
+          <Message />
+        ) : (
+          ""
+        )}
         {searchStatus === REQUEST_STATUS.SUCCESS &&
         search.length > 0 &&
         places.length > 0 ? (

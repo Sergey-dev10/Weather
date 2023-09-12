@@ -4,33 +4,24 @@ export interface Coordinates {
   lon: number;
 }
 
-// interface WeatherInfo {
-//   description: string;
-// }
-
+interface WeatherInfo {
+  description?: string;
+  icon?: string;
+}
 export interface CurrentWeather {
-  temp: number | null;
-  feels_like: number | null;
-  weather: [
-    {
-      description: string | null;
-    }
-  ] | null;
+  temp?: number;
+  feels_like?: number;
+  weather: WeatherInfo[];
 }
 
-interface HourlyWeather {
+interface Hourly {
   dt: number;
   temp: number;
   feels_like: number;
-  weather: [
-    {
-      description: string;
-      icon: string;
-    },
-  ];
+  weather: WeatherInfo[];
 }
 
-interface DailyWeather {
+interface Daily {
   dt: number;
   temp: {
     eve: number;
@@ -38,21 +29,16 @@ interface DailyWeather {
   feels_like: {
     eve: number;
   };
-  weather: [
-    {
-      description: string;
-      icon: string;
-    },
-  ];
+  weather: WeatherInfo[];
 }
 interface ForecastWeather {
-  hourly: HourlyWeather[];
-  daily: DailyWeather[];
+  hourly?: Hourly[];
+  daily?: Daily[];
 }
 
 export interface Weather {
-  current: CurrentWeather | null;
-  forecast: ForecastWeather | null;
+  current: CurrentWeather;
+  forecast: ForecastWeather;
 }
 
 export interface WeatherState extends Weather {

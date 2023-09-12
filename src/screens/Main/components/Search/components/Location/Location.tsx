@@ -1,8 +1,7 @@
 import { ListItemButton, ListItemText } from "@mui/material";
 import { LocationProps } from "../../../../../../modules/search/types.ts";
 import { useAppDispatch} from "../../../../../../hooks";
-import {weatherStart} from "../../../../../../modules/weather/slice.ts";
-
+import { weatherStart } from "../../../../../../modules/weather/actions.ts";
 export const Location = ({ name, onChoose, lat, lon }: LocationProps) => {
     const dispatch = useAppDispatch();
     const handleChoose = (e) => {
