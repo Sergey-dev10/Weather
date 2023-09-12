@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TextField, FormControl, Box } from "@mui/material";
+import { TextField, FormControl } from "@mui/material";
 
 export const SearchInput = styled(TextField)`
   .MuiInputBase-input {
@@ -16,11 +16,3 @@ export const FormControlWrapper = styled(FormControl)`
   }
 `;
 
-export const LocationsWrapper = styled(Box)`
-      position: absolute;
-      top: 4rem;
-      z-index: 1000;
-      border: 0.1rem solid #373a40;
-      border-radius: 0.25rem;
-      background-color: #25262f;
-`;

@@ -1,25 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Box, InputAdornment, List } from "@mui/material";
+import { Box, InputAdornment } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
-import {searchStart} from "../../../../modules/search/actions.ts";
+import { searchStart } from "../../../../modules/search/actions.ts";
 import { clearSearchResult } from "../../../../modules/search/slice.ts";
 import {
   selectSearchStatus,
   selectPlaces,
 } from "../../../../modules/search/selectors.ts";
-import { Place } from "../../../../modules/search/types.ts";
-import { Location } from "./components/Location";
 import { REQUEST_STATUS } from "../../../../core/api/types.ts";
 import { Message } from "./components/Message";
-import { nanoid } from "@reduxjs/toolkit";
 import { debounce } from "debounce";
-import {
-  FormControlWrapper,
-  LocationsWrapper,
-  SearchInput,
-} from "./Search.styles.ts";
+import { FormControlWrapper, SearchInput } from "./Search.styles.ts";
+import { LocationsList } from "./components/LocationsList";
 
 export const Search = () => {
   const [search, setSearch] = useState("");
@@ -27,16 +21,13 @@ export const Search = () => {
   const dispatch = useAppDispatch();
   const places = useAppSelector(selectPlaces);
   const searchStatus = useAppSelector(selectSearchStatus);
-  const [isSelected, setIsSelected] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
-    setIsSelected(false);
     setIsClearIcon(true);
     dispatch(clearSearchResult());
   };
 
   const clearSearch = debounce(() => {
-    setIsSelected(false);
     setIsClearIcon(false);
     dispatch(clearSearchResult());
   }, 600);
@@ -47,12 +38,6 @@ export const Search = () => {
     }
   }, 100);
 
-  const handleChoose = (e: React.MouseEvent<HTMLDivElement>) => {
-    const btn = e.currentTarget as HTMLDivElement;
-    setSearch(btn.innerText);
-    setIsSelected(true);
-    dispatch(clearSearchResult());
-  };
   const handleClear = () => {
     setSearch("");
     setIsClearIcon(false);
@@ -64,7 +49,7 @@ export const Search = () => {
       clearSearch();
       return;
     }
-    if (searchQuery && !isSelected) {
+    if (searchQuery) {
       startSearch(searchQuery);
     }
     return () => {
@@ -103,27 +88,7 @@ export const Search = () => {
         {searchStatus === REQUEST_STATUS.SUCCESS &&
         search.length > 0 &&
         places.length > 0 ? (
-          <LocationsWrapper
-            sx={{
-              width: 600,
-            }}
-          >
-            <List>
-              {places.length
-                ? places.map((place: Place) => {
-                    return (
-                      <Location
-                        key={nanoid()}
-                        name={place.name}
-                        lat={place.lat}
-                        lon={place.lon}
-                        onChoose={handleChoose}
-                      />
-                    );
-                  })
-                : ""}
-            </List>
-          </LocationsWrapper>
+          <LocationsList places={places} />
         ) : (
           ""
         )}

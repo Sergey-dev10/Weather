@@ -1,4 +1,3 @@
-import React from "react";
 import { REQUEST_STATUS } from "../../core/api/types.ts";
 export interface Place {
   name: string;
@@ -8,13 +7,13 @@ export interface Place {
 }
 
 export interface SearchState {
+  location: string;
   result: Place[];
   status: REQUEST_STATUS;
 }
 
 export interface LocationProps {
   name: string;
-  onChoose: (e: React.MouseEvent<HTMLDivElement>) => void;
   lat: number;
   lon: number;
 }
