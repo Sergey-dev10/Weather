@@ -19,6 +19,7 @@ export const Current = () => {
         flexDirection: "column",
         height: 200,
         marginTop: 10,
+        marginBottom: 10,
       }}
     >
       <Description>{description}</Description>

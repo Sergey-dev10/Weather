@@ -61,7 +61,7 @@ export const Search = () => {
     <Box>
       <FormControlWrapper sx={{ display: "flex" }}>
         <SearchInput
-          sx={{ width: 600 }}
+          sx={{ width: "100%" }}
           placeholder="Enter the name of your location"
           value={search}
           onChange={handleChange}

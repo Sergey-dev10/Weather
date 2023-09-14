@@ -2,11 +2,10 @@ import { ListItemButton, ListItemText } from "@mui/material";
 import { LocationProps } from "../../../../../../modules/search/types.ts";
 import { useAppDispatch} from "../../../../../../hooks";
 import { weatherStart } from "../../../../../../modules/weather/actions.ts";
-export const Location = ({ name, onChoose, lat, lon }: LocationProps) => {
+export const Location = ({ name, lat, lon }: LocationProps) => {
     const dispatch = useAppDispatch();
-    const handleChoose = (e) => {
+    const handleChoose = () => {
         dispatch(weatherStart({lat, lon}));
-        onChoose(e);
     };
   return (
     <ListItemButton onClick={handleChoose}>

@@ -8,7 +8,7 @@ export const LocationsList = ({ places }: { places: Place[] }) => {
   return (
     <LocationsWrapper
       sx={{
-        width: 600,
+        width: 800,
       }}
     >
       <List>

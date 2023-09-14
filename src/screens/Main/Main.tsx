@@ -9,14 +9,15 @@ export const Main = () => {
       sx={{
         display: "flex",
         justifyContent: "center",
+        maxWidth: "lg",
       }}
     >
       <Box
         sx={{
-          maxWidth: "lg",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          width: "80%",
           paddingTop: 5,
         }}
       >

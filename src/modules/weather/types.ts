@@ -5,8 +5,8 @@ export interface Coordinates {
 }
 
 interface WeatherInfo {
-  description?: string;
-  icon?: string;
+  description: string;
+  icon: string;
 }
 export interface CurrentWeather {
   temp?: number;
