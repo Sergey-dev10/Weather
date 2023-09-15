@@ -41,6 +41,7 @@ export const Description = styled(Typography)`
     font-size: 1.125rem;
     line-height: 1.55;
     text-align: center;
+    text-transform: capitalize;
   }
 `;
 

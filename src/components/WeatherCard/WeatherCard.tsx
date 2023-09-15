@@ -8,8 +8,8 @@ import {
 } from "./WeatherCard.styles.ts";
 interface WeatherCardProps {
   time: string;
-  temp: number;
-  feelsLike: number;
+  temp: string;
+  feelsLike: string;
   icon?: string;
   description?: string;
 }

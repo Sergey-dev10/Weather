@@ -2,6 +2,7 @@ import { Box } from "@mui/system";
 import { Search } from "./components/Search";
 import { Weather } from "./components/Weather";
 import { Container } from "@mui/material";
+import {H1} from "./Main.styles.ts";
 
 export const Main = () => {
   return (
@@ -18,9 +19,9 @@ export const Main = () => {
           flexDirection: "column",
           justifyContent: "center",
           width: "80%",
-          paddingTop: 5,
         }}
       >
+         <H1>Local Weather</H1>
         <Search />
         <Weather />
       </Box>
