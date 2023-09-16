@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
   html {
     font-size: 16px;
@@ -11,4 +11,10 @@ export const GlobalStyles = createGlobalStyle`
       color: #c1c2c5;
       line-height: 1.55;
     }
+`;
+
+export const H2 = styled.h2`
+  text-align: center;
+  font-size: 1.625rem;
+  font-weight: 700;
 `;

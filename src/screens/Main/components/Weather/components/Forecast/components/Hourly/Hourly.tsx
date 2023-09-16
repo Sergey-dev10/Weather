@@ -6,11 +6,10 @@ import { nanoid } from "@reduxjs/toolkit";
 import { timestampToAMPM } from "../../../../../../../../utils/timestampToAMPM.ts";
 import { getImage } from "../../../../../../../../utils/getImage.ts";
 import {convertTempToFC} from "../../../../../../../../utils/convertTempToFC.ts";
-import {H2} from "./Hourly.styles.ts";
+import {H2} from "../../../../../../../../common/CommonStyles.styles.ts"
 export const Hourly = () => {
   const forecast = useAppSelector(selectForecast);
   const hourly = forecast?.hourly?.slice(1, 5);
-  console.log(hourly);
   return (
       <>
         <H2>The Next 4 Hours</H2>
