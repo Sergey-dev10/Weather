@@ -6,11 +6,7 @@ import { LocationsWrapper } from "./LocationsList.styles.ts";
 
 export const LocationsList = ({ places }: { places: Place[] }) => {
   return (
-    <LocationsWrapper
-      sx={{
-        width: 800,
-      }}
-    >
+    <LocationsWrapper>
       <List>
         {places.length
           ? places.map((place: Place) => {

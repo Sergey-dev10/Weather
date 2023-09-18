@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { weatherStart } from "./actions.ts"
+import { weatherStart } from "./actions.ts";
 import { weatherSuccess } from "./slice.ts";
 import { getWeather } from "../../core/api";
 function* weatherWorker({

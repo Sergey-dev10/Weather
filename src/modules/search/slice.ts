@@ -24,13 +24,10 @@ const searchSlice = createSlice({
       state.result = [];
       state.status = REQUEST_STATUS.INIT;
     },
-    failedSearch(state) {
-      state.status = REQUEST_STATUS.ERROR;
-    },
   },
 });
 
-export const { setLocation, searchSuccess, clearSearchResult, failedSearch } =
+export const { setLocation, searchSuccess, clearSearchResult } =
   searchSlice.actions;
 
 export default searchSlice.reducer;

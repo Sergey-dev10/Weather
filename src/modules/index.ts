@@ -1,27 +1,25 @@
-import {configureStore} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import {combineReducers} from "@reduxjs/toolkit";
-import {all} from "redux-saga/effects";
+import { combineReducers } from "@reduxjs/toolkit";
+import { all } from "redux-saga/effects";
 import searchReducer from "./search/slice";
-import {searchWatcher} from "./search/saga.ts";
+import { searchWatcher } from "./search/saga.ts";
 import weatherReducer from "./weather/slice";
-import {weatherWatcher} from "./weather/saga.ts";
+import { weatherWatcher } from "./weather/saga.ts";
 
 const rootReducer = combineReducers({
-    search: searchReducer,
-    weather: weatherReducer,
+  search: searchReducer,
+  weather: weatherReducer,
 });
 const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
-    yield all([
-        searchWatcher(),
-        weatherWatcher(),
-    ]);
+  yield all([searchWatcher(), weatherWatcher()]);
 }
 export const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);

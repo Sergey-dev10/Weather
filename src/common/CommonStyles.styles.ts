@@ -18,6 +18,8 @@ export const GlobalStyles = createGlobalStyle`
 `;
 
 export const H2 = styled.h2`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
   font-size: 1.625rem;
   font-weight: 700;

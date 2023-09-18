@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import {MessageWrapper} from "./Message.styles.ts";
+import { MessageWrapper } from "./Message.styles.ts";
 export const Message = () => {
   return (
     <Box
@@ -8,7 +8,9 @@ export const Message = () => {
         justifyContent: "center",
       }}
     >
-      <MessageWrapper>The location name you entered was not found.</MessageWrapper>
+      <MessageWrapper>
+        The location name you entered was not found.
+      </MessageWrapper>
     </Box>
   );
 };

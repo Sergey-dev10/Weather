@@ -1,10 +1,10 @@
-import {Hourly} from "./components/Hourly";
-import {Daily} from "./components/Daily";
+import { Hourly } from "./components/Hourly";
+import { Daily } from "./components/Daily";
 export const Forecast = () => {
-    return (
-        <>
-            <Hourly/>
-            <Daily/>
-        </>
-    );
+  return (
+    <>
+      <Hourly />
+      <Daily />
+    </>
+  );
 };

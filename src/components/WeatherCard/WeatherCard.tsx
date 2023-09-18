@@ -22,19 +22,11 @@ export const WeatherCard = ({
 }: WeatherCardProps) => {
   return (
     <CardWrapper>
-      <Time variant="body1">
-        {time}
-      </Time>
-      <Temp variant="body1">
-        {temp}
-      </Temp>
+      <Time variant="body1">{time}</Time>
+      <Temp variant="body1">{temp}</Temp>
       <CardMediaWrapper image={icon} />
-      <Description variant="body1">
-        {description}
-      </Description>
-      <FeelsLike variant="body1">
-        Feels Like: {feelsLike}
-      </FeelsLike>
+      <Description variant="body1">{description}</Description>
+      <FeelsLike variant="body1">Feels Like: {feelsLike}</FeelsLike>
     </CardWrapper>
   );
 };
