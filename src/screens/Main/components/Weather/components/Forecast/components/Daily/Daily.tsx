@@ -13,7 +13,7 @@ export const Daily = () => {
   const forecast = useAppSelector(selectForecast);
   const tempMetric = useAppSelector(selectTempMetric);
 
-  const daily = forecast?.daily?.slice(0);
+  const daily = forecast?.daily?.slice();
 
   return (
     <>
@@ -26,9 +26,9 @@ export const Daily = () => {
             sm={6}
             md={3}
             sx={{ display: "flex", justifyContent: "center" }}
+            key={nanoid()}
           >
             <WeatherCard
-              key={nanoid()}
               time={timestampToDay(item.dt)}
               temp={convertTempToFC(item.temp.eve, tempMetric)}
               feelsLike={convertTempToFC(item.feels_like.eve, tempMetric)}

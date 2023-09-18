@@ -23,9 +23,9 @@ export const Hourly = () => {
             sm={6}
             md={3}
             sx={{ display: "flex", justifyContent: "center" }}
+            key={nanoid()}
           >
             <WeatherCard
-              key={nanoid()}
               time={timestampToAMPM(item.dt)}
               temp={convertTempToFC(item.temp, tempMetric)}
               feelsLike={convertTempToFC(item.feels_like, tempMetric)}
