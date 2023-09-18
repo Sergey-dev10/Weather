@@ -6,7 +6,7 @@ export const getPlaces = (searchQuery: string) => {
     .get(PLACE_URL, {
       params: {
         q: searchQuery,
-        appid: "70a7e54e3b54932247ad27262b24a8ce",
+        appid: import.meta.env.VITE_API_KEY,
         limit: 10,
       },
     })
@@ -21,7 +21,7 @@ export const getWeather = (lat: number, lon: number) => {
       params: {
         lat: lat,
         lon: lon,
-        appid: "70a7e54e3b54932247ad27262b24a8ce",
+        appid: import.meta.env.VITE_API_KEY,
       },
     })
     .then((response) => response.data);

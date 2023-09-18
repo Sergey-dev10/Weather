@@ -14,7 +14,6 @@ export const Daily = () => {
   const tempMetric = useAppSelector(selectTempMetric);
 
   const daily = forecast?.daily?.slice(0);
-  console.log(daily);
 
   return (
     <>
