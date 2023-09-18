@@ -1,8 +1,9 @@
 import { Box } from "@mui/system";
-import { Search } from "./components/Search";
-import { Weather } from "./components/Weather";
 import { Container } from "@mui/material";
 import {H1} from "./Main.styles.ts";
+import { Search } from "./components/Search";
+import { Weather } from "./components/Weather";
+import {Settings} from "./components/Settings";
 
 export const Main = () => {
   return (
@@ -21,7 +22,8 @@ export const Main = () => {
           width: "80%",
         }}
       >
-         <H1>Local Weather</H1>
+        <Settings />
+        <H1>Local Weather</H1>
         <Search />
         <Weather />
       </Box>

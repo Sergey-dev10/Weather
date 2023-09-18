@@ -43,4 +43,10 @@ export interface Weather {
 
 export interface WeatherState extends Weather {
   status: REQUEST_STATUS;
+  tempMetric: TEMP_METRIC;
+}
+
+export enum TEMP_METRIC {
+  CELSIUS = "C",
+  FAHRENHEIT = "F",
 }

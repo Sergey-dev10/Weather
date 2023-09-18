@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { REQUEST_STATUS } from "../../core/api/types.ts";
-import { Weather, WeatherState } from "./types.ts";
+import { Weather, WeatherState, TEMP_METRIC } from "./types.ts";
 
 const initialState: WeatherState = {
   status: REQUEST_STATUS.INIT,
+  tempMetric: TEMP_METRIC.CELSIUS,
   current: {
     weather: [],
   },
@@ -26,9 +27,12 @@ const weatherSlice = createSlice({
       };
       state.forecast = {};
     },
+    toggleTempMetric(state, action: PayloadAction<TEMP_METRIC>) {
+      state.tempMetric = action.payload;
+    },
   },
 });
 
-export const { weatherSuccess, clearWeather } =
+export const { weatherSuccess, clearWeather, toggleTempMetric } =
   weatherSlice.actions;
 export default weatherSlice.reducer;
