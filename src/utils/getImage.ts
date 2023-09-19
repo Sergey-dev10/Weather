@@ -1,3 +1,3 @@
 export const getImage = (icon: string) => {
-  return `./src/assets/${icon}.svg`;
+  return `./assets/${icon}.svg`;
 };

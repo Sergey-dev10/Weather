@@ -25,6 +25,7 @@ export const Current = () => {
         marginBottom: 10,
       }}
     >
+
       <Description>{description}</Description>
       <Temp>{convertTempToFC(temp, tempMetric)}</Temp>
       <FeelsLike>
