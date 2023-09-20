@@ -14,6 +14,7 @@ export const LocationsList = ({ places }: { places: Place[] }) => {
                 <Location
                   key={nanoid()}
                   name={place.name}
+                  country={place.country}
                   lat={place.lat}
                   lon={place.lon}
                 />

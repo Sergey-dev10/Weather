@@ -14,6 +14,7 @@ export interface SearchState {
 
 export interface LocationProps {
   name: string;
+  country: string;
   lat: number;
   lon: number;
 }
