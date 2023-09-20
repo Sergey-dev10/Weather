@@ -20,7 +20,6 @@ const searchSlice = createSlice({
       state.result = action.payload;
     },
     clearSearchResult(state) {
-      state.location = "";
       state.result = [];
       state.status = REQUEST_STATUS.INIT;
     },
