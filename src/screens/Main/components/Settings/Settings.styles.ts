@@ -15,7 +15,7 @@ export const ModalContent = styled(Box)`
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 24.5rem;
+    width: 20rem;
     height: 8rem;
     padding: 1rem;
     transform: translate(-50%, -50%);
