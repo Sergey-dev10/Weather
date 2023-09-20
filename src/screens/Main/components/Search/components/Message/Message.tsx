@@ -6,6 +6,7 @@ export const Message = () => {
       sx={{
         display: "flex",
         justifyContent: "center",
+        mt: 2,
       }}
     >
       <MessageWrapper>

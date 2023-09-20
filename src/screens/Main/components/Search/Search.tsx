@@ -10,7 +10,6 @@ import {
   selectPlaces,
 } from "../../../../modules/search/selectors.ts";
 import { REQUEST_STATUS } from "../../../../core/api/types.ts";
-import { Message } from "./components/Message";
 import { debounce } from "debounce";
 import { FormControlWrapper, SearchInput } from "./Search.styles.ts";
 import { LocationsList } from "./components/LocationsList";
@@ -80,11 +79,7 @@ export const Search = () => {
             ),
           }}
         />
-        {searchStatus === REQUEST_STATUS.SUCCESS && places.length === 0 ? (
-          <Message />
-        ) : (
-          ""
-        )}
+
         {searchStatus === REQUEST_STATUS.SUCCESS &&
         search.length > 0 &&
         places.length > 0 ? (

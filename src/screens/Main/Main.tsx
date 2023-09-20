@@ -1,11 +1,22 @@
+import {useAppSelector} from "../../hooks";
 import { Container } from "@mui/material";
-import {H1} from "./Main.styles.ts";
+import { H1 } from "./Main.styles.ts";
 import { Search } from "./components/Search";
 import { Weather } from "./components/Weather";
-import {Settings} from "./components/Settings";
-import {MainWrapper} from "./Main.styles.ts";
+import { Settings } from "./components/Settings";
+import { Message } from "./components/Search/components/Message";
+import {
+  selectSearchStatus,
+  selectPlaces,
+} from "../../modules/search/selectors.ts";
+import { MainWrapper } from "./Main.styles.ts";
+import { REQUEST_STATUS } from "../../core/api/types.ts";
+
 
 export const Main = () => {
+  const searchStatus = useAppSelector(selectSearchStatus);
+  const places = useAppSelector(selectPlaces);
+
   return (
     <Container
       sx={{
@@ -18,6 +29,11 @@ export const Main = () => {
         <Settings />
         <H1>Local Weather</H1>
         <Search />
+        {searchStatus === REQUEST_STATUS.SUCCESS && places.length === 0 ? (
+          <Message />
+        ) : (
+          ""
+        )}
         <Weather />
       </MainWrapper>
     </Container>
