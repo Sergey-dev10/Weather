@@ -5,9 +5,11 @@ export const CardWrapper = styled(Card)`
   &.MuiCard-root {
     width: 10.5rem;
     padding: 1.55rem;
-    color: #c1c2c5;
+    color: ${({ theme }) => theme.color};
     text-align: center;
-    background-color: #25262f;
+    background-color: ${({ theme }) => theme.cardBackgroundColor};
+    border: 0.1rem solid #373a40;
+    border-radius: 0.25rem;
   }
 `;
 
@@ -46,9 +48,9 @@ export const Description = styled(Typography)`
 `;
 
 export const FeelsLike = styled(Typography)`
-    &.MuiTypography-root {
-      font-size: 1.125rem;
-      color: #e8590c;
-      text-align: center;
-    }
+  &.MuiTypography-root {
+    font-size: 1.125rem;
+    color: #e8590c;
+    text-align: center;
+  }
 `;

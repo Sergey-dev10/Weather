@@ -1,15 +1,14 @@
-import {useAppSelector} from "../../hooks";
+import { useAppSelector } from "../../hooks";
 import { Container } from "@mui/material";
-import { H1 } from "./Main.styles.ts";
+import { H1, MainWrapper } from "./Main.styles.ts";
 import { Search } from "./components/Search";
 import { Weather } from "./components/Weather";
 import { Settings } from "./components/Settings";
 import { Message } from "./components/Search/components/Message";
 import {
-  selectSearchStatus,
   selectPlaces,
+  selectSearchStatus,
 } from "../../modules/search/selectors.ts";
-import { MainWrapper } from "./Main.styles.ts";
 import { REQUEST_STATUS } from "../../core/api/types.ts";
 
 

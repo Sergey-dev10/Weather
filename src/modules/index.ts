@@ -6,10 +6,12 @@ import searchReducer from "./search/slice";
 import { searchWatcher } from "./search/saga.ts";
 import weatherReducer from "./weather/slice";
 import { weatherWatcher } from "./weather/saga.ts";
+import themeReducer from "./theme/slice";
 
 const rootReducer = combineReducers({
   search: searchReducer,
   weather: weatherReducer,
+  theme: themeReducer,
 });
 const sagaMiddleware = createSagaMiddleware();
 

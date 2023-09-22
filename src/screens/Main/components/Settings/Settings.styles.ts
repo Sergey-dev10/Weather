@@ -3,10 +3,9 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 
-
 export const SettingsIconWrapper = styled(SettingsIcon)`
   &.MuiSvgIcon-root {
-    color: #c1c2c5;
+    color: ${({ theme }) => theme.color};
   }
 `;
 
@@ -19,15 +18,15 @@ export const ModalContent = styled(Box)`
     height: 8rem;
     padding: 1rem;
     transform: translate(-50%, -50%);
-    background-color: #1a1b1e;
+    background-color: ${({ theme }) => theme.backgroundColor};
     border-radius: 0.2rem;
   }
 `;
 
 export const SettingsButton = styled(Button)`
-    &.MuiButton-root {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
+  &.MuiButton-root {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 `;

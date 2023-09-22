@@ -1,15 +1,21 @@
-import { Provider } from "react-redux";
-import store from "./modules";
+import { useAppSelector } from "./hooks";
 import { Main } from "./screens/Main";
 import { GlobalStyles } from "./common/CommonStyles.styles.ts";
+import { selectTheme } from "./modules/theme/selectors.ts";
+import { ThemeProvider } from "styled-components";
+import { Theme } from "./modules/theme/types.ts";
+import { lightTheme, darkTheme } from "./common/theme.ts";
 function App() {
+  const theme = useAppSelector(selectTheme);
+  const selectedTheme = theme === Theme.LIGHT ? lightTheme : darkTheme;
+
   return (
-    <Provider store={store}>
-      <>
+    <>
+      <ThemeProvider theme={selectedTheme}>
         <Main />
         <GlobalStyles />
-      </>
-    </Provider>
+      </ThemeProvider>
+    </>
   );
 }
 

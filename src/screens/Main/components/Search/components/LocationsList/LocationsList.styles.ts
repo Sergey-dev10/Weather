@@ -8,5 +8,5 @@ export const LocationsWrapper = styled(Box)`
   z-index: 1000;
   border: 0.1rem solid #373a40;
   border-radius: 0.25rem;
-  background-color: #25262f;
+  background-color: ${({ theme }) => theme.locationsBackgroundColor};
 `;

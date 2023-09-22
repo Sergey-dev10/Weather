@@ -11,7 +11,7 @@ import Switch from "@mui/material/Switch";
 export const ToggleTempMetric = () => {
   const dispatch = useAppDispatch();
   const tempMetric = useAppSelector(selectTempMetric);
-  const [isChecked, setIsChecked] = useState(true);
+  const [isChecked, setIsChecked] = useState(false);
   const handleChange = () => {
     setIsChecked(!isChecked);
     if (isChecked) {
