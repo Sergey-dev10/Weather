@@ -1,20 +1,20 @@
 import { useState } from "react";
-import { useAppSelector, useAppDispatch } from "../../../../../../hooks";
+import { useAppDispatch } from "../../../../../../hooks";
 import { toggleTempMetric } from "../../../../../../modules/weather/slice.ts";
 import { TEMP_METRIC } from "../../../../../../modules/weather/types.ts";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { selectTempMetric } from "../../../../../../modules/weather/selectors.ts";
 
 import Switch from "@mui/material/Switch";
 
 export const ToggleTempMetric = () => {
   const dispatch = useAppDispatch();
-  const tempMetric = useAppSelector(selectTempMetric);
   const [isChecked, setIsChecked] = useState(false);
   const handleChange = () => {
-    setIsChecked(!isChecked);
-    if (isChecked) {
+      const newCheckedValue = !isChecked;
+      setIsChecked(newCheckedValue);
+
+    if (newCheckedValue) {
       dispatch(toggleTempMetric(TEMP_METRIC.FAHRENHEIT));
     } else {
       dispatch(toggleTempMetric(TEMP_METRIC.CELSIUS));
@@ -26,7 +26,7 @@ export const ToggleTempMetric = () => {
       <FormControlLabel
         control={
           <Switch
-            checked={tempMetric === TEMP_METRIC.FAHRENHEIT}
+            checked={isChecked}
             onChange={handleChange}
           />
         }
