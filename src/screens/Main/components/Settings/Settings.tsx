@@ -1,9 +1,14 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import {SettingsIconWrapper, ModalContent, SettingsButton} from "./Settings.styles.ts";
-import {ToggleTempMetric} from "./components/ToggleTempMetric";
-import {ToggleTheme} from "./components/ToggleTheme";
+import {
+  SettingsIconWrapper,
+  ModalContent,
+  SettingsButton,
+} from "./Settings.styles.ts";
+import { ToggleTempMetric } from "./components/ToggleTempMetric";
+import { ToggleTheme } from "./components/ToggleTheme";
+
 export const Settings = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -21,9 +26,9 @@ export const Settings = () => {
         aria-describedby="modal-modal-description"
       >
         <ModalContent>
-            <h3>Settings</h3>
-            <ToggleTempMetric />
-            <ToggleTheme />
+          <h3>Settings</h3>
+          <ToggleTempMetric />
+          <ToggleTheme />
         </ModalContent>
       </Modal>
     </Box>

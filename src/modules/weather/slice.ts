@@ -4,7 +4,7 @@ import { Weather, WeatherState, TEMP_METRIC } from "./types.ts";
 
 const initialState: WeatherState = {
   status: REQUEST_STATUS.INIT,
-  tempMetric: TEMP_METRIC.CELSIUS,
+  tempMetric: localStorage.getItem("tempMetric") || TEMP_METRIC.CELSIUS,
   current: {
     weather: [],
   },
@@ -29,6 +29,8 @@ const weatherSlice = createSlice({
     },
     toggleTempMetric(state, action: PayloadAction<TEMP_METRIC>) {
       state.tempMetric = action.payload;
+      localStorage.setItem("tempMetric", action.payload)
+
     },
   },
 });
